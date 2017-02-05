@@ -1,0 +1,87 @@
+<div *ngFor="let screen of screens" id="{{screen[0]}}" class="row">
+  <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12 feed-panel"
+           title={{screen[0]}} baCardClass="medium-card">
+    <!--{"QuitScreen":{"text":{"en": "Quit Screen", "fr":"Janvier"}}}-->
+    <h3><p>{{screen[1]['text']['en']}}<br/></p></h3>
+
+    <h3 *ngIf="screen[1].hasOwnProperty('options')">
+      <p *ngFor="let option of screen[1]['options'] || []; let i=index">
+        <b style="margin-right: 15px">{{i+1}}</b>
+        <button type="button" (click)="goTo(option['next_screen'])" class="btn btn-default">
+          <b>{{option['text']['en']}}</b></button>
+        <br/>
+        <br/></p>
+    </h3>
+    <p class="auth-link">
+      <button
+        *ngIf="screen[1].hasOwnProperty('next_screen') && all_screens[screen[1]['next_screen']]['type'] != 'router_screen' && all_screens[screen[1]['next_screen']]['type'] != 'http_screen'"
+        (click)="goTo(screen[1]['next_screen'])" type="button" class="btn btn-info  btn-xm btn-raised">Next Screen(
+        {{screen[1]['next_screen']}})
+      </button>
+    </p>
+    <p class="auth-link">
+      <button *ngIf="screen[1]['type'] == 'quit_screen'" type="button" (click)="smModal.show()"
+              class="btn btn-info  btn-xm btn-raised">End Screen
+      </button>
+    </p>
+  </ba-card>
+
+  <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-xs-12 feed-panel"
+           title="Edit {{screen[0]}}" baCardClass="medium-card">
+    <form>
+      <div class="form-group">
+        <label for="textarea01">Textarea</label>
+        <textarea placeholder="Default Input" value="{{screen[1]['text']['en']}}" class="form-control"
+                  id="textarea01"></textarea>
+      </div>
+      <div *ngIf="screen[1].hasOwnProperty('options')" class="form-group">
+        <label for="exampleSelect1">Screens</label>
+        <select multiple class="form-control" id="exampleSelect1">
+          <option *ngFor="let option of screen[1]['options'] || []">{{option['text']['en']}}</option>
+        </select>
+      </div>
+      <p class="auth-link">
+        <button type="button" class="btn btn-info  btn-xm btn-raised">Save Changes</button>
+      </p>
+    </form>
+  </ba-card>
+</div>
+
+<!-- Small modal -->
+<div bsModal #smModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" aria-label="Close" (click)="smModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" style="color: #e85656">Quit / End Screen</h4>
+      </div>
+      <div class="modal-body" style="color: #e85656">
+        This is a quit / end screen. It's used to end a customer journey. Quit screens do not have a next screen to
+        display.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-warning" (click)="smModal.hide()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngFor="let special_screen of special_screens" class="row" id="{{special_screen[0]}}">
+  <ba-card
+    class="col-xlg-12 col-xl-12 col-lg-12 col-sm-12 col-xs-12"
+    title="{{special_screen[0]}}" baCardClass="medium-card">
+    <h3><p><br/></p></h3>
+
+    <h3>
+      <p *ngFor="let router_screen of special_screen[1]['router_options']; let i=index" class="auth-link">
+        <b style="margin-right: 15px">{{i+1}}</b>
+        <button type="button" (click)="goTo(router_screen['next_screen'])" class="btn btn-default"><b>{{router_screen['next_screen']}}</b></button>
+        <br/>
+        <br/></p>
+    </h3>
+  </ba-card>
+</div>

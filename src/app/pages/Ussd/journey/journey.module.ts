@@ -8,7 +8,6 @@ import { NgaModule } from '../../theme/nga.module';
 
 import {Journey} from "./journey.component";
 import {routing} from "./journey.routing";
-import {ModalModule} from "ng2-bootstrap";
 
 
 @NgModule({
@@ -17,11 +16,10 @@ import {ModalModule} from "ng2-bootstrap";
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
-    routing,
-    ModalModule.forRoot(),
+    routing
   ],
   declarations: [
-    Journey,
+    Journey
   ]
 })
 export class JourneyModule {}
