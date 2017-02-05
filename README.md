@@ -11,7 +11,9 @@ Admin template made with :heart:  by [Team Tumacredo](https://www.linkedin.com/i
 <a target="_blank" href="http://akveo.com/ng2-admin/"><img src="http://i.imgur.com/QK9AzHj.jpg" width="600" alt="Sky Blue"/></a>
  
 ## Documentation
-Installation, customization and other useful articles: https://akveo.github.io/ng2-admin/
+Installation and other useful articles about UssdAirflow: https://github.com/mwaaas/ussd_airflow/
+
+Installation of Ussd AIrflow: https://github.com/eliaskioni/UssdAirflowVisualizer
 
 ## Based on
 Angular 2, Bootstrap 4, Webpack and lots of awesome modules and plugins
