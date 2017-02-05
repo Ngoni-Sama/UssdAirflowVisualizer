@@ -40,5 +40,5 @@ Yes!  Email [eliaskioni94@gmail.com](https://www.linkedin.com/in/elias-kioni-a6b
 
 ### From Tumacredo
 
-Enjoy
+Enjoy :metal:
 We will be happy to hear your feedback!
